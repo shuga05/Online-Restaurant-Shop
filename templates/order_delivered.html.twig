@@ -1,0 +1,30 @@
+{% extends "master.html.twig" %}
+
+{% block title %}{{a.title}} Orders Received{% endblock %}
+
+{% block content %}
+
+     <br><a href="/admin/orders">Home page</a><br><br>
+     
+  
+   
+     <br>Order Details go here:<br><br>
+     
+    <form method='post'>        
+        
+        Placed by: <input type='text' value='{{o.shipToName}}' disabled><br>
+        Amount Requested <input type='text' value='{{o.quantity}} kg' disabled><br>
+        Ship To Address: <input type='text' value='{{o.shipToAddress}}' disabled><br>
+        Order placed Date: <input type='text' value='{{o.orderPlacedDate}}' disabled><br>
+        Required Dlivery Date: <input type='text' value='{{o.requiredDeliveryDate}}' disabled><br>
+        Comments: <textarea name='comments' disabled>{{o.comments}} </textarea><br><br><br>
+        
+        Order Delivery Date: <input type="text" value="{{0.deliveredDate}}" disabled><br><br>
+        
+         <input type="submit" value="Submit">
+    </form>     
+    
+                
+          <br><a href="/admin/orders">Retturn to all orders</a><br><br>
+
+{% endblock %}

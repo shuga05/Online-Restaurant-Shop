@@ -1,0 +1,24 @@
+{% extends "admin_master.html.twig" %}
+
+
+{% block addhead %}{% endblock %}
+{% block content %}
+
+
+<section class="content-style">
+            <div class="container">
+                <p class="login-vita-style"><strong>VITA</strong>DELICES</p>
+<form id="form-style" method="post">
+    <label class="style-color">Email:</label><input class="style-input" type="email" name="email"><br><br>
+    <label class="style-color">Password:</label> <input class="style-input" type="password" name="password"><br></br>
+    <input type="submit" value="Log In">
+</form>
+
+    {% if error %}    
+    <p class="error">Login credentials invalid.</p>
+    {% endif %}
+            </div>
+</section>
+    
+{% endblock %}
+

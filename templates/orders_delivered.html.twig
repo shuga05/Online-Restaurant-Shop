@@ -1,0 +1,33 @@
+{% extends "admin_master.html.twig" %}
+
+{% block title %}{{a.title}} Orders In Progress{% endblock %}
+
+{% block content %}
+
+    <br><a href="/admin/orders">Retturn to all orders</a><br><br>
+   
+   
+          <br><a href="/admin/orders">Home page</a><br><br>
+          
+     Orders Delivered:
+     {% if ordDelivered !=null %}
+        <ul id="delivered">
+            {% for order in ordDelivered %}
+               <li>
+                   <a href="/order/{{order.orderId}}">{{order.orderId}}, {{order.shipToName}}, {{order.quantity}}kg, due by {{order.requiredDeliveryDate}} - {{order.shipToCity}}</a>
+               </li>
+           {% endfor %}
+        </ul>     
+      {% else %}
+        <br><br>Sorry, No items delivered yet!<br>
+    {% endif %}
+         
+    
+    <br><a href="/admin/orders">Retturn to all orders</a><br><br>        
+   
+
+{% endblock %}
+
+    
+    
+   

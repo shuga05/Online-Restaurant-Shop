@@ -1,0 +1,60 @@
+{% extends "admin_master.html.twig" %}
+
+{% block title %}{{a.title}} Manage Orders{% endblock %}
+
+{% block addhead %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $("#button1").onClick(function() {
+                });
+            });
+        </script>
+{% endblock %}
+
+{% block content %}   
+    
+   <div class="center-section">
+       
+       <div class="center-content">   
+         <br><a href="/admin/orders">Order Page</a><br><br>
+    <div class="row">      
+     Orders received: 
+     <ul id="received">
+         {% for order in ordReceived %}
+            <li>
+                <a href="/order/{{order.orderId}}">{{order.orderId}}, {{order.shipToName}}, {{order.quantity}}kg, due by {{order.requiredDeliveryDate}} - {{order.shipToCity}}</a><br>
+            </li>
+        {% endfor %}
+     </ul>
+    </div>
+     
+    <div class="center-content"> 
+    <div class="row"> 
+    <br> Orders In Progress:
+      <ul id="inprogress">
+         {% for order in ordInProgress %}
+             <a href="/order/1">{{order.orderId}}, {{order.shipToName}}, {{order.quantity}}kg, due by {{order.requiredDeliveryDate}} - {{order.shipToCity}}</a><br>
+        {% endfor %}
+     </ul>
+    </div>
+
+  
+    <a href="/admin/orders/delivered">Orders Delivered so far</a>
+  
+  
+   </div>
+
+   
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
+

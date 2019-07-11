@@ -1,0 +1,135 @@
+{% extends "master.html.twig" %}
+
+{% block head %}
+    <script>
+        $(document).ready(function(){
+            
+            $("input[name=btnAdd]").click(function(){
+                var name = $("input[name=quantity]").val("");
+                var deliveryDate = $("input[name=requiredDeliveryDate]").val("");
+                
+                $("#display").text(name, deliveryDate);
+                
+            });
+            
+        });
+    </script>
+{% endblock %}
+
+{% block title %}
+    {% if action == 'edit' %}
+        Vita Delices
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+
+
+    <!--errorList is formed for 'post' action in the index file-->
+    {% if errorList %}    
+        <ul class="error">
+            {% for error in errorList %}
+                <li>{{error}}</li>
+                {% endfor %}
+        </ul>
+    {% endif %}
+
+    <section>   
+        <div class="row backgroundimg">
+            <div class="container">
+                <h4 class="style-head text-center">Indulge in Bliss</h4>
+            </div>
+        </div>
+    </section>
+
+    <section class="about space-style" id="about">
+        <div class="container">
+            <h1>About Us</h1>
+            <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean pulvinar, lectus eget posuere tempus, elit nisi iaculis mi, non convallis enim nibh ac neque. Nulla porttitor aliquet lacus, nec mollis eros volutpat non. Pellentesque at imperdiet nulla. Ut mi nisl, dapibus eget mauris et, maximus porttitor massa. Maecenas pretium massa est. Nam dapibus sodales purus, non faucibus diam iaculis ac. Aliquam lacinia tortor augue, luctus vehicula leo sodales vitae. Cras a tellus nec nunc hendrerit varius sed in est. Ut faucibus risus sit amet nulla posuere tempor id vitae justo.</p>
+            <p class="text-justify">Cras sed tincidunt nulla. Cras consequat lacus id orci interdum, at scelerisque metus hendrerit. Morbi in justo lorem. Fusce suscipit ex ante, eget ultricies dolor interdum scelerisque. Sed varius ac risus porttitor sollicitudin. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent egestas gravida mauris in blandit. Praesent sit amet pulvinar nisi. Ut vitae dictum sem, non porttitor ex. In mattis mi sit amet urna dignissim consectetur. Nulla nec feugiat mi. In egestas fringilla fringilla. Donec pellentesque nisl non maximus eleifend. Donec sodales laoreet turpis id pharetra. Nam velit lectus, maximus a tincidunt ut, pellentesque eget tortor. Curabitur semper felis vel velit laoreet, quis maximus erat tincidunt.</p>
+        </div> 
+    </section>
+
+    <section class="orders space-style" id="orders">
+        <div class="container style-con">
+            <h1>Menu</h1>
+            <div class="row">
+                {% for product in productLists %}
+                    <div class="col-sm-4">
+                        <h4>{{product.name}}</h4>
+                        <img class="img-container" src="/images/{{product.img}}" />
+                        <p>${{product.unitPrice}}</p>
+                        <p class="text-left">{{product.description}}</p>
+                        <form method="POST" action="index.html.twig" enctype="multipart/form-data">
+                            Quantity: <input type="number" name="quantity" value="{{o.quantity}}"><br>
+                            Peferred Delivery: <input type="date" name="requiredDeliveryDate" id="start-" value="{{o.requiredDeliveryDate}}"><br>
+                         <input name="btnAdd" type="button" class="btn btn-dark btn-block" value="Add">  
+                        </form>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>    
+    </section>
+
+
+    <section class="space-style">
+        <div class="container">
+            <h1>Total</h1>
+            <span id="display"></span>
+            <div class="row">
+                <div class="col font-weight-bold">
+                    Items
+                </div>
+                <div class="col col-lg-2">
+                    Price
+                </div>
+                <div class="col col-lg-2">
+                    3 of 3
+                </div> 
+            </div>
+            
+            <!-- Did not have time to do this part of the project -->
+
+            {% for order in orderLists %}
+                <div class="row" id="itemrow{{order.productId}}">
+                    <div class="col">
+                        <span id="display"></span>
+                        <p>{{order.name}}</p>
+                    </div>
+                    <div class="col col-lg-2">
+                        <p>{{order.unitPrice}}</p>
+                    </div>
+                    <div class="col col-lg-2">
+                        <p class="cartQuantity" cartID="{{order.productId}}" name="quantity{{order.productId}}" value="{{order.quantity}}"></p>
+                    </div> 
+                </div>
+            {% endfor %}
+            
+           <div class="row">
+                <div class="col font-weight-bold">
+                   
+                </div>
+                <div class="col col-lg-2">
+                    <p> Total:</p> 
+                </div>
+                <div class="col col-lg-2">
+                    
+                </div> 
+            </div>
+    
+    <button type="button" class="btn btn-dark">Order</button>     
+        
+        
+        </div>
+   
+</section>                
+
+{% endblock %}
+
+
+
+
+
+
+
+

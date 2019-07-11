@@ -1,0 +1,29 @@
+{% extends "admin_master.html.twig" %}
+
+{% block title %}{{a.title}} Orders In Progress{% endblock %}
+
+{% block content %}
+
+    <br><a href="/admin/orders">Retturn to all orders</a><br><br>
+   
+   
+     <br>Order Details go here:<br><br>
+     
+    <form method='post'>        
+        
+        Placed by: <input type='text' value='{{o.shipToName}}' disabled><br>
+        Amount Requested <input type='text' value='{{o.quantity}} kg' disabled><br>
+        Ship To Address: <input type='text' value='{{o.shipToAddress}}' disabled><br>
+        Order placed Date: <input type='text' value='{{o.orderPlacedDate}}' disabled><br>
+        Required Dlivery Date: <input type='text' value='{{o.requiredDeliveryDate}}' disabled><br>
+        Comments: <textarea name='comments'>{{o.comments}} </textarea><br><br><br>
+        
+        Has this order been completed? <input type="checkbox" name ='moveToDeloivered' ><br><br>
+        
+         <input type="submit" value="Submit">
+    </form>     
+    
+    <br><a href="/admin/orders">Retturn to all orders</a><br><br>        
+   
+
+{% endblock %}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="../admin_styles.css" rel="stylesheet" type="text/css"/>
+       <!-- <link rel="stylesheet" href="/admin_styles.css" /> -->
+        <title>{% block title %}{% endblock %} - Vitadelices</title>
+        {% block addhead %}{% endblock %}
+    </head>
+    <body>
+        <section>
+            <div id="header" class="aaa" align="left">
+                {% if sessionAdmin %}
+                    <p>Hi {{sessionAdmin.firstName}}. You can <a href="/">logout</a>.</p>                    
+                        
+                {% else %}
+                    Admin <a href="/adminlogin">login</a>   
+                {% endif %}
+            </div>
+            
+            {% block content %}{% endblock %}
+            </section>
+            <!-- TODO: add Google Analytics tracking code -->
+        </div>
+        </body>
+    
+</html>
+
